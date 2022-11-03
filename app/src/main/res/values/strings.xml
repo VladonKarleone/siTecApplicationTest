@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">sitecTestApp</string>
+    <string name="login">Вход</string>
+    <string name="loginEnter">Логин</string>
+</resources>
