@@ -1,7 +1,6 @@
 package com.example.sitectestapp;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -21,8 +19,6 @@ import com.example.sitectestapp.data.network.SiTecApi;
 import com.example.sitectestapp.ui.users.UsersActivity;
 
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Random;
 
@@ -33,9 +29,6 @@ import dagger.android.support.DaggerAppCompatActivity;
 public class MainActivity extends DaggerAppCompatActivity implements MainBaseContract.View {
 
     @Inject
-    SiTecApi siTecApi;
-
-    @Inject
     MainBaseContract.Presenter presenter;
 
     @Override
@@ -43,7 +36,8 @@ public class MainActivity extends DaggerAppCompatActivity implements MainBaseCon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter.bindView(this);
-        presenter.getUsersList(siTecApi);
+        presenter.getUsersList();
+        presenter.getUsersForSpinner();
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, PackageManager.PERMISSION_GRANTED);
 
@@ -53,7 +47,7 @@ public class MainActivity extends DaggerAppCompatActivity implements MainBaseCon
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                presenter.setUid(siTecApi, userSpinner.getSelectedItem().toString(), editTextPassword.getText().toString());
+                presenter.getUidAndAuth(userSpinner.getSelectedItem().toString(), editTextPassword.getText().toString());
             }
         });
     }
@@ -83,7 +77,7 @@ public class MainActivity extends DaggerAppCompatActivity implements MainBaseCon
     }
 
     @Override
-    public void setSpinner(List<String> users) {
+    public void addUsersToSpinner(List<String> users) {
         Spinner userSpinner = findViewById(R.id.userLogin);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, users);

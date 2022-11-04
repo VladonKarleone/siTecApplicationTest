@@ -3,6 +3,7 @@ package com.example.sitectestapp;
 import com.example.sitectestapp.di.AppComponent;
 import com.example.sitectestapp.di.AppModule;
 import com.example.sitectestapp.di.DaggerAppComponent;
+import com.example.sitectestapp.di.modules.InteractorModule;
 import com.example.sitectestapp.di.modules.NetworkModule;
 import com.example.sitectestapp.di.modules.UsersModule;
 
@@ -16,6 +17,7 @@ public class SiTecApp extends DaggerApplication {
             .appModule(new AppModule())
             .networkModule(new NetworkModule())
             .usersModule(new UsersModule())
+            .interactorModule(new InteractorModule())
             .build();
 
     @Override

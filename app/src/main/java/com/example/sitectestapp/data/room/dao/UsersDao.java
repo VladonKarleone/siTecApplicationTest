@@ -13,6 +13,9 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
+/**
+ * Пользователи
+ */
 @Dao
 public interface UsersDao {
 

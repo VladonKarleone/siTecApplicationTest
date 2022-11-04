@@ -3,6 +3,7 @@ package com.example.sitectestapp.di;
 import android.app.Application;
 
 import com.example.sitectestapp.SiTecApp;
+import com.example.sitectestapp.di.modules.InteractorModule;
 import com.example.sitectestapp.di.modules.NetworkModule;
 import com.example.sitectestapp.di.modules.ScreenBuilder;
 import com.example.sitectestapp.di.modules.UsersModule;
@@ -20,7 +21,8 @@ import dagger.android.support.DaggerApplication;
         ScreenBuilder.ActivityBuilder.class,
         AndroidInjectionModule.class,
         UsersModule.class,
-        NetworkModule.class})
+        NetworkModule.class,
+        InteractorModule.class})
 
 @Singleton
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
@@ -40,6 +42,9 @@ public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
         @BindsInstance
         Builder usersModule(UsersModule usersModule);
+
+        @BindsInstance
+        Builder interactorModule(InteractorModule interactorModule);
 
         AppComponent build();
     }

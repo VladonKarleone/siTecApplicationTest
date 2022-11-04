@@ -12,6 +12,9 @@ import java.util.List;
 
 import io.reactivex.Single;
 
+/**
+ * Успешные ответы
+ */
 @Dao
 public interface ResponsesDao {
     @Query("SELECT * FROM responses")

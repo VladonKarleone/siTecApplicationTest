@@ -1,19 +1,23 @@
 package com.example.sitectestapp.ui.users;
 
-import com.example.sitectestapp.data.network.SiTecApi;
 import com.example.sitectestapp.ui.base.BaseContract;
 
 import java.util.List;
 
-import io.reactivex.Completable;
-import io.reactivex.Single;
-
 public interface UsersBaseContract {
     interface View extends BaseContract.BaseView {
-        void setResponses(List<String> responses);
+
+        /**
+         * Вывод текста на экран
+         * @param responses - массив строк для вывода на экран
+         */
+        void showResponses(List<String> responses);
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
+        /**
+         * Установка текста с успешными попытками для вывода на экран
+         */
         void setText();
     }
 }

@@ -1,30 +1,48 @@
 package com.example.sitectestapp;
 
-import com.example.sitectestapp.data.network.SiTecApi;
 import com.example.sitectestapp.ui.base.BaseContract;
 
 import java.util.List;
 
-import io.reactivex.Completable;
-
 public interface MainBaseContract {
     interface View extends BaseContract.BaseView {
-        void setSpinner(List<String> users);
 
+        /**
+         * Добавление списка пользователей в спиннер
+         * @param users список пользователей
+         */
+        void addUsersToSpinner(List<String> users);
+
+        /**
+         * Открытие экрана со списком успешных авторизаций
+         */
         void openUsersActivity();
 
+        /**
+         * Получение IMEI
+         */
         String getIMEI();
 
     }
 
     interface Presenter extends BaseContract.Presenter<MainBaseContract.View> {
-        void getUsersList(SiTecApi siTecApi);
 
-        void auth(SiTecApi siTecApi, String uid, String pass);
+        /**
+         * Получение списка пользователей с сервера
+         */
+        void getUsersList();
 
+        /**
+         * Получение списка пользователей из БД
+         */
         void getUsersForSpinner();
 
-        void setUid(SiTecApi siTecApi, String user, String pass);
+        /**
+         * Получение UID по пользователю из БД и отправка запроса авторизации
+         * @param user пользователь
+         * @param pass пароль
+         */
+        void getUidAndAuth(String user, String pass);
     }
 
 

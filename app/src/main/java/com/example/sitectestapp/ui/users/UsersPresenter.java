@@ -3,6 +3,8 @@ package com.example.sitectestapp.ui.users;
 import android.util.Log;
 
 import com.example.sitectestapp.data.room.dao.DataBaseRoom;
+import com.example.sitectestapp.di.modules.InteractorModule;
+import com.example.sitectestapp.ui.base.Interactor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 public class UsersPresenter implements UsersBaseContract.Presenter {
 
     @Inject
-    public DataBaseRoom dataBaseRoom;
+    public Interactor.UsersInteractor usersInteractor;
 
     private UsersBaseContract.View view;
 
@@ -25,8 +27,8 @@ public class UsersPresenter implements UsersBaseContract.Presenter {
         this.view = view;
     }
 
-    public UsersPresenter(DataBaseRoom dataBaseRoom) {
-        this.dataBaseRoom = dataBaseRoom;
+    public UsersPresenter(Interactor.UsersInteractor usersInteractor) {
+        this.usersInteractor = usersInteractor;
     }
 
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -34,7 +36,7 @@ public class UsersPresenter implements UsersBaseContract.Presenter {
     @Override
     public void setText() {
         compositeDisposable.add(
-                dataBaseRoom.responsesDao().getResponses()
+                usersInteractor.getResponses()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
@@ -48,7 +50,7 @@ public class UsersPresenter implements UsersBaseContract.Presenter {
                                             responsesText.add("CurrentDate: " + responsesEntities.get(i).getCurrentDate()  + "\n");
                                             responsesText.add("---------------------"  + "\n");
                                         }
-                                        view.setResponses(responsesText);
+                                        view.showResponses(responsesText);
                                     } catch (Throwable throwable) {
                                         Log.e("ERROR", "UsersPresenter#setText", throwable);
                                     }

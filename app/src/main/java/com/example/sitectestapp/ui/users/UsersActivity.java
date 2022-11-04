@@ -22,9 +22,6 @@ public class UsersActivity extends DaggerAppCompatActivity implements UsersBaseC
     @Inject
     public UsersBaseContract.Presenter presenter;
 
-    @Inject
-    public SiTecApi siTecApi;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +41,7 @@ public class UsersActivity extends DaggerAppCompatActivity implements UsersBaseC
     }
 
     @Override
-    public void setResponses(List<String> responses) {
+    public void showResponses(List<String> responses) {
         TextView responseField = findViewById(R.id.responseField);
         for (int i = 0; i < responses.size(); i++) {
             responseField.setText(responseField.getText().toString() + responses.get(i));

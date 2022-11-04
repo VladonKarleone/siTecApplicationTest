@@ -1,6 +1,6 @@
 package com.example.sitectestapp.di.modules;
 
-import com.example.sitectestapp.data.room.dao.DataBaseRoom;
+import com.example.sitectestapp.ui.base.Interactor;
 import com.example.sitectestapp.ui.users.UsersBaseContract;
 import com.example.sitectestapp.ui.users.UsersPresenter;
 
@@ -11,7 +11,7 @@ import dagger.Provides;
 public class UsersModule {
 
     @Provides
-    UsersBaseContract.Presenter provideUsersPresenter(DataBaseRoom dataBaseRoom) {
-        return new UsersPresenter(dataBaseRoom);
+    UsersBaseContract.Presenter provideUsersPresenter(Interactor.UsersInteractor usersInteractor) {
+        return new UsersPresenter(usersInteractor);
     }
 }
