@@ -1,7 +1,5 @@
 # Built application files
 *.apk
-!LiteBox/orchestrator-1.3.0.apk
-!LiteBox/test-services-1.3.0.apk
 *.ap_
 # Files for the Dalvik VM
 *.dex
