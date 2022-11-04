@@ -62,6 +62,9 @@ public class MainPresenter implements MainBaseContract.Presenter {
         );
     }
 
+    /**
+     * Конвертация ответа от сервера в сущность для записи в БД
+     */
     private List<UserEntity> getUserEntity(UsersResponse usersResponse) {
         List<ListUsers> userList = usersResponse.users.listUsers;
         List<UserEntity> users = new ArrayList<>();
@@ -80,9 +83,9 @@ public class MainPresenter implements MainBaseContract.Presenter {
     }
 
     @Override
-    public void getUsersForSpinner() {
+    public void getUsersFromDB() {
         compositeDisposable.add(
-                mainInteractor.getUsers()
+                mainInteractor.getUsersFromDB()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
@@ -103,7 +106,7 @@ public class MainPresenter implements MainBaseContract.Presenter {
     @Override
     public void getUidAndAuth(String user, String pass) {
         compositeDisposable.add(
-                mainInteractor.getUID(user)
+                mainInteractor.getUid(user)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
@@ -117,6 +120,12 @@ public class MainPresenter implements MainBaseContract.Presenter {
         );
     }
 
+    /**
+     * Отправка запроса на авторизацию пользователя.
+     * При успешном выполнении будет добавлена запись в БД и совершён
+     * переход на окно с успешными попытками. При неудачной авторизации
+     * будет выведено сообщение "Ошибка авторизации"
+     */
     private void auth(String uid, String pass) {
         compositeDisposable.add(
                 mainInteractor.auth(view.getImei(), uid, pass)

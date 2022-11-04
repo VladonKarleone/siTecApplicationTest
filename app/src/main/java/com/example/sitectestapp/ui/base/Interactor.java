@@ -19,12 +19,12 @@ public interface Interactor {
         /**
          * Получить пользователей из БД
          */
-        Single<List<UserEntity>> getUsers();
+        Single<List<UserEntity>> getUsersFromDB();
 
         /**
-         * Получить UID
+         * Получить UID пользователя
          */
-        Single<String> getUID(String user);
+        Single<String> getUid(String user);
 
         /**
          * Авторизация
@@ -32,22 +32,21 @@ public interface Interactor {
         Single<AuthResponse> auth(String imei, String uid, String pass);
 
         /**
-         * Добавить запись о успешной авторизации в БД
+         * Добавить запись об успешной авторизации в БД
          *
          * @param responsesEntity ответ при успешной авторизации
          */
         void insertResponse(ResponsesEntity responsesEntity);
 
         /**
-         * Добавить запись о пользователе в БД
-         *
-         * @param userEntity информация о пользователе
+         * Добавить пользователя в БД, если его там нет
          */
         void insertUser(UserEntity userEntity);
 
     }
 
     interface UsersInteractor {
+
         /**
          * Получить все записи из таблицы с успешными авторизациями
          */

@@ -33,7 +33,7 @@ public interface MainBaseContract {
         /**
          * Получение списка пользователей из БД
          */
-        void getUsersForSpinner();
+        void getUsersFromDB();
 
         /**
          * Получение UID по пользователю из БД и отправка запроса авторизации

@@ -31,7 +31,7 @@ public class MainActivity extends DaggerAppCompatActivity implements MainBaseCon
         setContentView(binding.getRoot());
         presenter.bindView(this);
         presenter.getUsersList();
-        presenter.getUsersForSpinner();
+        presenter.getUsersFromDB();
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, PackageManager.PERMISSION_GRANTED);
 

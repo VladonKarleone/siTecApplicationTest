@@ -38,9 +38,6 @@ public class MainInteractor implements Interactor.MainInteractor {
         return siTecApi.getUsersList(imei);
     }
 
-    /**
-     * Проверить и добавить пользователя, если его нет в БД
-     */
     @Override
     public void insertUser(UserEntity user) {
         compositeDisposable.add(
@@ -73,12 +70,12 @@ public class MainInteractor implements Interactor.MainInteractor {
     }
 
     @Override
-    public Single<List<UserEntity>> getUsers() {
+    public Single<List<UserEntity>> getUsersFromDB() {
         return dataBaseRoom.usersDao().getUsers();
     }
 
     @Override
-    public Single<String> getUID(String user) {
+    public Single<String> getUid(String user) {
         return dataBaseRoom.usersDao().getUidByUser(user);
     }
 
