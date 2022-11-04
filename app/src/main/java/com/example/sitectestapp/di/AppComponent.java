@@ -1,15 +1,12 @@
 package com.example.sitectestapp.di;
 
 import android.app.Application;
-
 import com.example.sitectestapp.SiTecApp;
 import com.example.sitectestapp.di.modules.InteractorModule;
 import com.example.sitectestapp.di.modules.NetworkModule;
 import com.example.sitectestapp.di.modules.ScreenBuilder;
 import com.example.sitectestapp.di.modules.UsersModule;
-
 import javax.inject.Singleton;
-
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;

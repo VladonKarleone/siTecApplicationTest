@@ -1,16 +1,10 @@
 package com.example.sitectestapp.ui.users;
 
 import android.util.Log;
-
-import com.example.sitectestapp.data.room.dao.DataBaseRoom;
-import com.example.sitectestapp.di.modules.InteractorModule;
 import com.example.sitectestapp.ui.base.Interactor;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;

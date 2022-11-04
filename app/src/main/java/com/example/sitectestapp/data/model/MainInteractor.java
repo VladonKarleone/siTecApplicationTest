@@ -4,17 +4,13 @@ import android.util.Log;
 
 import com.example.sitectestapp.data.network.SiTecApi;
 import com.example.sitectestapp.data.response.AuthResponse;
-import com.example.sitectestapp.data.response.ListUsers;
 import com.example.sitectestapp.data.response.UsersResponse;
 import com.example.sitectestapp.data.room.dao.DataBaseRoom;
 import com.example.sitectestapp.data.room.entities.ResponsesEntity;
 import com.example.sitectestapp.data.room.entities.UserEntity;
 import com.example.sitectestapp.ui.base.Interactor;
-;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,7 +32,6 @@ public class MainInteractor implements Interactor.MainInteractor {
         this.siTecApi = siTecApi;
         this.dataBaseRoom = dataBaseRoom;
     }
-
 
     @Override
     public Single<UsersResponse> getUsersList(String imei) {
@@ -74,7 +69,7 @@ public class MainInteractor implements Interactor.MainInteractor {
      * @param user пользователь
      */
     private Single<List<UserEntity>> getUserByUID(UserEntity user) {
-        return dataBaseRoom.usersDao().getUserByUID(user.getUid());
+        return dataBaseRoom.usersDao().getUserByUid(user.getUid());
     }
 
     @Override
@@ -84,7 +79,7 @@ public class MainInteractor implements Interactor.MainInteractor {
 
     @Override
     public Single<String> getUID(String user) {
-        return dataBaseRoom.usersDao().getUIDByUser(user);
+        return dataBaseRoom.usersDao().getUidByUser(user);
     }
 
     @Override

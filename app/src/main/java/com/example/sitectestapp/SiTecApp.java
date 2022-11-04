@@ -6,7 +6,6 @@ import com.example.sitectestapp.di.DaggerAppComponent;
 import com.example.sitectestapp.di.modules.InteractorModule;
 import com.example.sitectestapp.di.modules.NetworkModule;
 import com.example.sitectestapp.di.modules.UsersModule;
-
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
 

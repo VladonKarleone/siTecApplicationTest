@@ -2,10 +2,8 @@ package com.example.sitectestapp.di.modules;
 
 import com.example.sitectestapp.data.network.SiTecApi;
 import com.example.sitectestapp.data.network.interceptros.BasicAuthInterceptor;
-
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-
 import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.net.ssl.HostnameVerifier;
@@ -14,7 +12,6 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -50,12 +47,10 @@ public class NetworkModule {
             final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override
-                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                        }
+                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {}
 
                         @Override
-                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                        }
+                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {}
 
                         @Override
                         public java.security.cert.X509Certificate[] getAcceptedIssuers() {
@@ -66,14 +61,10 @@ public class NetworkModule {
 
             X509TrustManager x509TrustManager = new X509TrustManager() {
                 @Override
-                public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
-
-                }
+                public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {}
 
                 @Override
-                public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
-
-                }
+                public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {}
 
                 @Override
                 public X509Certificate[] getAcceptedIssuers() {

@@ -4,9 +4,7 @@ import com.example.sitectestapp.data.response.AuthResponse;
 import com.example.sitectestapp.data.response.UsersResponse;
 import com.example.sitectestapp.data.room.entities.ResponsesEntity;
 import com.example.sitectestapp.data.room.entities.UserEntity;
-
 import java.util.List;
-
 import io.reactivex.Single;
 
 public interface Interactor {

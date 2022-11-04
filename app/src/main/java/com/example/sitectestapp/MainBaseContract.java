@@ -1,7 +1,6 @@
 package com.example.sitectestapp;
 
 import com.example.sitectestapp.ui.base.BaseContract;
-
 import java.util.List;
 
 public interface MainBaseContract {
@@ -21,8 +20,7 @@ public interface MainBaseContract {
         /**
          * Получение IMEI
          */
-        String getIMEI();
-
+        String getImei();
     }
 
     interface Presenter extends BaseContract.Presenter<MainBaseContract.View> {

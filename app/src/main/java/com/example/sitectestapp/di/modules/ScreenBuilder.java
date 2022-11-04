@@ -1,8 +1,7 @@
 package com.example.sitectestapp.di.modules;
-;
+
 import com.example.sitectestapp.MainActivity;
 import com.example.sitectestapp.ui.users.UsersActivity;
-
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 

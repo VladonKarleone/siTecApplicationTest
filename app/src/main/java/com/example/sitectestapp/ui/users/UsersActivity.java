@@ -1,21 +1,11 @@
 package com.example.sitectestapp.ui.users;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.appcompat.widget.AppCompatTextView;
 import com.example.sitectestapp.R;
-import com.example.sitectestapp.data.network.SiTecApi;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import dagger.android.support.DaggerAppCompatActivity;
 
 public class UsersActivity extends DaggerAppCompatActivity implements UsersBaseContract.View {
@@ -42,7 +32,7 @@ public class UsersActivity extends DaggerAppCompatActivity implements UsersBaseC
 
     @Override
     public void showResponses(List<String> responses) {
-        TextView responseField = findViewById(R.id.responseField);
+        AppCompatTextView responseField = findViewById(R.id.responseField);
         for (int i = 0; i < responses.size(); i++) {
             responseField.setText(responseField.getText().toString() + responses.get(i));
         }

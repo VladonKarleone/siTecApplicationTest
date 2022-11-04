@@ -2,7 +2,6 @@ package com.example.sitectestapp.data.network;
 
 import com.example.sitectestapp.data.response.AuthResponse;
 import com.example.sitectestapp.data.response.UsersResponse;
-
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

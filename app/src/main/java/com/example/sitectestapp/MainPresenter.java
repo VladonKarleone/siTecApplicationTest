@@ -1,18 +1,14 @@
 package com.example.sitectestapp;
 
 import android.util.Log;
-
 import com.example.sitectestapp.data.response.ListUsers;
 import com.example.sitectestapp.data.response.UsersResponse;
 import com.example.sitectestapp.data.room.entities.ResponsesEntity;
 import com.example.sitectestapp.data.room.entities.UserEntity;
 import com.example.sitectestapp.ui.base.Interactor;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -38,7 +34,7 @@ public class MainPresenter implements MainBaseContract.Presenter {
     @Override
     public void getUsersList() {
         compositeDisposable.add(
-                mainInteractor.getUsersList(view.getIMEI())
+                mainInteractor.getUsersList(view.getImei())
                         .subscribeOn(Schedulers.io())
                         .map(response -> {
                             List<UserEntity> userList = getUserEntity(response);
@@ -123,7 +119,7 @@ public class MainPresenter implements MainBaseContract.Presenter {
 
     private void auth(String uid, String pass) {
         compositeDisposable.add(
-                mainInteractor.auth(view.getIMEI(), uid, pass)
+                mainInteractor.auth(view.getImei(), uid, pass)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(

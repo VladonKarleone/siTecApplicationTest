@@ -1,7 +1,6 @@
 package com.example.sitectestapp.ui.users;
 
 import com.example.sitectestapp.ui.base.BaseContract;
-
 import java.util.List;
 
 public interface UsersBaseContract {

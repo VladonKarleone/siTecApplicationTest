@@ -1,13 +1,10 @@
 package com.example.sitectestapp.di;
 
 import android.app.Application;
-
 import com.example.sitectestapp.data.room.dao.DataBaseRoom;
 import com.example.sitectestapp.data.room.repository.DbRepository;
 import com.example.sitectestapp.data.room.repository.DbRepositoryImpl;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 
