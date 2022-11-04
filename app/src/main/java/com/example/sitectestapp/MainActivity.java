@@ -9,11 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
-
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.app.ActivityCompat;
+import com.example.sitectestapp.databinding.MainActivityBinding;
 import com.example.sitectestapp.ui.users.UsersActivity;
 import java.util.List;
 import java.util.Random;
@@ -25,23 +22,22 @@ public class MainActivity extends DaggerAppCompatActivity implements MainBaseCon
     @Inject
     MainBaseContract.Presenter presenter;
 
+    MainActivityBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = MainActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         presenter.bindView(this);
         presenter.getUsersList();
         presenter.getUsersForSpinner();
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, PackageManager.PERMISSION_GRANTED);
 
-        AppCompatEditText editTextPassword = findViewById(R.id.editTextPassword);
-        AppCompatButton loginButton = findViewById(R.id.loginButton);
-        AppCompatSpinner userSpinner = findViewById(R.id.userLogin);
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        binding.loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                presenter.getUidAndAuth(userSpinner.getSelectedItem().toString(), editTextPassword.getText().toString());
+                presenter.getUidAndAuth(binding.userLoginSpinner.getSelectedItem().toString(), binding.editTextPassword.getText().toString());
             }
         });
     }
@@ -72,11 +68,10 @@ public class MainActivity extends DaggerAppCompatActivity implements MainBaseCon
 
     @Override
     public void addUsersToSpinner(List<String> users) {
-        AppCompatSpinner userSpinner = findViewById(R.id.userLogin);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, users);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        userSpinner.setAdapter(adapter);
+        binding.userLoginSpinner.setAdapter(adapter);
     }
 
     @Override
